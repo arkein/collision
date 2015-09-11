@@ -19,12 +19,12 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Label>Come, check the collision</Label>
             <Button x:Name="AddButton" Click="AddButton_OnClick">Add more</Button>
-            <Button x:Name="CheckButton">Check</Button>
         </StackPanel>
         <Border Grid.Row="1">
-            <views:DrawingBoardView x:Name="Board"></views:DrawingBoardView>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                <views:DrawingBoardView x:Name="Board"></views:DrawingBoardView>
+            </ScrollViewer>
         </Border>
     </Grid>
 </Window>
