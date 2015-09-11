@@ -12,6 +12,9 @@ namespace CollisionTest.ViewModels
     public class ItemViewModel : ReactiveObject, IDrawingObject
     {
         [Reactive]
+        public string Id { get; protected set; }
+
+        [Reactive]
         public int Left { get; set; }
 
         [Reactive]

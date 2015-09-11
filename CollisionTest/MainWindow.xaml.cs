@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CollisionTest.ViewModels;
 using ReactiveUI.Fody.Helpers;
+using System.Collections;
 
 namespace CollisionTest
 {
@@ -21,11 +11,22 @@ namespace CollisionTest
     /// </summary>
     public partial class MainWindow : Window
     {
+        string TestData = "Lorem Ipsum Dolor Sit Amet";
+        Random rnd = new Random();
+
         public MainWindow()
         {
             InitializeComponent();
             DrawingBoard = new DrawingBoardViewModel();
-            DrawingBoard.AddNew(new SquareItemViewModel());
+            DrawingBoard.AddNew(new SquareItemViewModel(NewId()));
+            Board.DataContext = DrawingBoard;
+        }
+
+        private string NewId()
+        {
+            var start = rnd.Next(0, TestData.Length - 3);
+            var length = rnd.Next(2, 3);
+            return TestData.Substring(start, length);
         }
 
         [Reactive]
@@ -33,7 +34,9 @@ namespace CollisionTest
 
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
-            DrawingBoard.AddNew(new SquareItemViewModel());
+            var item = new SquareItemViewModel(NewId());
+            DrawingBoard.AddNew(item);
+            Log.Log.Message(string.Format("Added new item: {0}", item));
         }
     }
 }

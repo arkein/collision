@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Width="{Binding Width}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,8 +14,8 @@
     </UserControl.Resources>
     <Border>
         <StackPanel>
-            <Label>Hello!</Label>
-            <Rectangle Fill="{Binding Color}" Width="{Binding Width}" Height="80"></Rectangle>
+            <Label HorizontalContentAlignment="Center" Content="{Binding Id}" FontWeight="Bold" FontSize="16" ClipToBounds="True"></Label>
+            <Rectangle Fill="{Binding Color}" Height="80"></Rectangle>
         </StackPanel>
     </Border>
 </UserControl>

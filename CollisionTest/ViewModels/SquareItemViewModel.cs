@@ -6,14 +6,20 @@ namespace CollisionTest.ViewModels
 {
     public class SquareItemViewModel : ItemViewModel
     {
-        public SquareItemViewModel()
+        public SquareItemViewModel(string id)
         {
+            Id = id;
             var rnd = new Random();
-            Color = new SolidColorBrush(System.Windows.Media.Color.FromScRgb(255, rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255)));
-            Width = 50;
+            Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)));
+            Width = rnd.Next(25, 75);
         }
 
         [Reactive]
         public Brush Color { get; private set; }
+
+        public override string ToString()
+        {
+            return string.Format("Left = {0}, Width = {1}", Left, Width);
+        }
     }
 }

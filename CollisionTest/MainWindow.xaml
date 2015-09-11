@@ -24,7 +24,7 @@
             <Button x:Name="CheckButton">Check</Button>
         </StackPanel>
         <Border Grid.Row="1">
-            <views:DrawingBoardView DataContext="{Binding DrawingBoard}"></views:DrawingBoardView>
+            <views:DrawingBoardView x:Name="Board"></views:DrawingBoardView>
         </Border>
     </Grid>
 </Window>

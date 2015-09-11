@@ -13,5 +13,11 @@ namespace CollisionTest
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            Window logView = new LogView();
+            logView.DataContext = Log.Log.LogEntries;
+            logView.Show();
+        }
     }
 }
